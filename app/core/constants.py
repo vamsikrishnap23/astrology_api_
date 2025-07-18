@@ -142,6 +142,12 @@ COMPATIBILITY_HEADERS = {
     "raju": {"en": "Rajju", "te": "రాజుయు"},
     "total": {"en": "Total", "te": "మొత్తం"}
 }
+TELUGU_PLANET_SHORT = {
+    "Sun": "సూ", "Moon": "చం", "Mars": "కు", "Mercury": "బు",
+    "Jupiter": "గు", "Venus": "శు", "Saturn": "శ",
+    "Uranus": "యు", "Neptune": "నె", "Pluto": "పు",
+    "Rahu": "రా", "Ketu": "కే", "Ascendant": "ల"
+}
 
 # --- Utility reverse dictionaries for quick translation ---
 def planet_en2te(name):

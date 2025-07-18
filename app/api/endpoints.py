@@ -21,6 +21,17 @@ from app.schemas.transit_chart import TransitChartRequest, TransitChartSVGRespon
 from app.services.transit_chart_service import get_transit_chart_svg
 
 
+from app.schemas.progression_chart import ProgressionChartRequest, ProgressionChartSVGResponse
+from app.services.progression_chart_service import get_progression_chart_svg
+
+from app.schemas.ashtakootam import AshtakootamRequest, AshtakootamResponse
+from app.services.ashtakootam_service import get_ashtakootam_data
+
+from app.schemas.shadbala import ShadBalaRequest, ShadBalaResponse
+from app.services.shadbala_service import get_shadbala_data
+
+
+
 router = APIRouter()
 
 @router.post("/planetary-info", response_model=PlanetaryInfoResponse)
@@ -177,3 +188,18 @@ def d60_chart_endpoint(payload: DivChartRequest):
 def transit_chart_endpoint(payload: TransitChartRequest):
     result = get_transit_chart_svg(payload)
     return TransitChartSVGResponse(svg=result["svg"])
+
+@router.post("/progression-chart", response_model=ProgressionChartSVGResponse)
+def progression_chart_endpoint(payload: ProgressionChartRequest):
+    result = get_progression_chart_svg(payload)
+    return ProgressionChartSVGResponse(svg=result["svg"])
+
+@router.post("/ashtakootam", response_model=AshtakootamResponse)
+def ashtakootam_endpoint(payload: AshtakootamRequest):
+    result = get_ashtakootam_data(payload)
+    return AshtakootamResponse(**result)
+
+@router.post("/shadbala", response_model=ShadBalaResponse)
+def shadbala_endpoint(payload: ShadBalaRequest):
+    result = get_shadbala_data(payload)
+    return ShadBalaResponse(**result)

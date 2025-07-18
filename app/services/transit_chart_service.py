@@ -1,13 +1,7 @@
 from datetime import datetime
 from app.core.transit_chart import transit_chart
 
-# Telugu short symbols (as used everywhere in your files)
-TELUGU_PLANET_SHORT = {
-    "Sun": "సూ", "Moon": "చం", "Mars": "కు", "Mercury": "బు",
-    "Jupiter": "గు", "Venus": "శు", "Saturn": "శ",
-    "Uranus": "యు", "Neptune": "నె", "Pluto": "పు",
-    "Rahu": "రా", "Ketu": "కే", "Ascendant": "ల"
-}
+from app.core.constants import TELUGU_PLANET_SHORT
 
 def get_transit_chart_svg(params):
     # Build datetime
@@ -17,11 +11,8 @@ def get_transit_chart_svg(params):
     )
     lat, lon, tz = params.lat, params.lon, params.tz_offset
 
-    # Maitreya-logic: get all planets in their signs, including degree and retro!
     chart = transit_chart(dt, lat, lon, tz)
 
-    # Prepare house-wise array (12 signs) for SVG
-    # Each entry: [ (label, deg, retro), ... ]
     house_data = [[] for _ in range(12)]
     for planet, info in chart.items():
         label = TELUGU_PLANET_SHORT.get(planet, planet)
