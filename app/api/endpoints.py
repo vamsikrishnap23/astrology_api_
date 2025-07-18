@@ -30,8 +30,6 @@ from app.services.shadbala_service import get_shadbala_data
 from app.schemas.panchang import PanchangRequest, PanchangResponse
 from app.services.panchang_service import get_panchang_details
 
-from app.schemas.kp import KpSystemRequest, KpSystemResponse
-from app.services.kp_service import get_kp_details_service
 
 
 router = APIRouter()
@@ -208,7 +206,3 @@ def shadbala_endpoint(payload: ShadBalaRequest):
     result = get_shadbala_data(payload)
     return ShadBalaResponse(**result)
 
-@router.post("/kp-system", response_model=KpSystemResponse)
-def kp_system_endpoint(payload: KpSystemRequest):
-    result = get_kp_details_service(payload)
-    return KpSystemResponse(**result)
