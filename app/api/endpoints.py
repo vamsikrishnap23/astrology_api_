@@ -2,9 +2,6 @@ from fastapi import APIRouter, Response
 from app.schemas.planetary_info import PlanetaryInfoRequest, PlanetaryInfoResponse, PlanetInfo
 from app.services.planetary_info_service import get_planetary_info_table
 
-from app.schemas.panchang import PanchangRequest, PanchangResponse
-from app.services.panchang_service import get_panchang_details
-
 from app.schemas.dasha import VimshottariDashaRequest, VimshottariDashaResponse, Mahadasha, Antardasha
 from app.services.dasha_service import get_vimshottari_dashas
 
@@ -30,6 +27,12 @@ from app.services.ashtakootam_service import get_ashtakootam_data
 from app.schemas.shadbala import ShadBalaRequest, ShadBalaResponse
 from app.services.shadbala_service import get_shadbala_data
 
+from app.schemas.panchang import PanchangRequest, PanchangResponse
+from app.services.panchang_service import get_panchang_details
+
+
+
+
 
 
 router = APIRouter()
@@ -42,12 +45,14 @@ def planetary_info_endpoint(payload: PlanetaryInfoRequest):
     return PlanetaryInfoResponse(info=info_models)
 
 
-
-@router.post("/panchangam", response_model=PanchangResponse)
-def panchangam_endpoint(payload: PanchangRequest):
-    return get_panchang_details(payload)
-
-
+@router.post("/panchang", response_model=PanchangResponse)
+def panchang_endpoint(payload: PanchangRequest):
+    """
+    Panchang endpoint.\n
+    Telugu keys (in English), Telugu output values.
+    """
+    result = get_panchang_details(payload)
+    return PanchangResponse(**result)
 
 
 @router.post("/vimshottari-dashas", response_model=VimshottariDashaResponse)

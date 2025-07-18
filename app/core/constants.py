@@ -149,6 +149,58 @@ TELUGU_PLANET_SHORT = {
     "Rahu": "రా", "Ketu": "కే", "Ascendant": "ల"
 }
 
+PLANET_ORDER = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn']
+
+# Panchangam
+SIGN_NAMES = [
+    "", "Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya",
+    "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena"
+]
+TELUGU_SIGNS = [
+    "", "మేషం", "వృషభం", "మిథునం", "కర్కాటకం", "సింహం", "కన్యా",
+    "తుల", "వృశ్చికం", "ధనుస్సు", "మకరం", "కుంభం", "మీనం"
+]
+NAKSHATRA_NAMES = [
+    "Ashwini", "Bharani", "Krittika", "Rohini", "Mrigashira", "Ardra",
+    "Punarvasu", "Pushya", "Aslesha", "Magha", "Pubba", "Uttara",
+    "Hasta", "Chitta", "Swati", "Vishakha", "Anuradha", "Jyeshtha",
+    "Moola", "Purvashada", "Uttarashada", "Sravana", "Dhanishta",
+    "Shatabhisha", "Purvabhadra", "Uttarabhadra", "Revati"
+]
+TELUGU_NAKSHATRAS = [
+    "అశ్విని", "భరణి", "కృత్తిక", "రోహిణి", "మృగశిర", "ఆరవు", "పునర్వసు",
+    "పుష్యము", "ఆశ్లేష", "మాఘ", "పుబ్బ", "ఉత్తర", "హస్త", "చిత్త", "స్వాతి",
+    "విశాఖ", "అనూరాధ", "జ్యేష్ఠ", "మూల", "పూర్వాషాడ", "ఉత్తరాషాడ", "శ్రవణ",
+    "ధనిష్ట", "శతభిష", "పూర్వభాద్ర", "ఉత్తరభాద్ర", "రేవతి"
+]
+ENGLISH_WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+TELUGU_VAARAM = {
+    "Sunday": "ఆదివారం",
+    "Monday": "సోమవారం",
+    "Tuesday": "మంగళవారం",
+    "Wednesday": "బుధవారం",
+    "Thursday": "గురువారం",
+    "Friday": "శుక్రవారం",
+    "Saturday": "శనివారం"
+}
+TITHI_NAMES = [
+    "",
+    "పాడ్యమి", "విదియ", "తృతీయ", "చవితి", "పంచమి", "షష్ఠి",
+    "సప్తమి", "అష్టమి", "నవమి", "దశమి", "ఏకాదశి", "ద్వాదశి",
+    "త్రయోదశి", "చతుర్దశి", "పౌర్ణమి/అమావాస్య"
+]
+YOGA_NAMES = [
+    "విష్కుంభ", "ప్రీతి", "ఆయుష్మాన్", "సౌభాగ్యం", "శోభనం", "అతిగండ", "సుకర్మ", "ధృతిః",
+    "శూలం", "గండ", "వృద్ది", "ధ్రువమ్", "వ్యాఘాత", "హరణా", "వజ్ర", "సిద్ధి", "వ్యాతిపాత",
+    "వరియన్", "పరిఘ", "శివ", "సిద్ధ", "సాధ్య", "శుభ", "శుక్ల", "బ్రహ్మ", "ఇంద్ర", "వైధృతిః"
+]
+KARANA_NAMES = [
+    "",
+    "బవ", "బలవ", "కౌలవ", "తైతిల", "గరజ", "వణిజ", "విష్టి", "శకుని", "చతుష్పద", "నాగ"
+]
+# Panchangam calculations need these tables!
+
+
 # --- Utility reverse dictionaries for quick translation ---
 def planet_en2te(name):
     return TELUGU_PLANETS.get(name, name)

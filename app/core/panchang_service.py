@@ -7,5 +7,5 @@ def get_panchang_details(params):
         params.hour, params.minute, params.second,
         params.tz_offset
     )
-    # Pass lat/lon/tz for future sunrise extensions
+    # You can pass lat/lon/tz for further development (sunrise, etc), but not used directly here
     return get_panchang_telugu(jd, params.lat, params.lon, params.tz_offset)

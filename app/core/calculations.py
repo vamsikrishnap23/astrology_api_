@@ -76,8 +76,46 @@ def get_nakshatra(longitude):
     """
     return int(longitude // (360 / 27)) + 1
 
+def weekday(jd):
+    """Return weekday, 0=Monday, ..6=Sunday, given julian day."""
+    return int(jd + 2) % 7
+
+
 def get_pada(longitude):
     """
     Given longitude (deg), returns 1-based Pada number (1-4 per Nakshatra; 108 for full zodiac).
     """
     return int((longitude % (360 / 27)) // (360 / 108)) + 1
+
+def get_sunrise(year, month, day, lat, lon, tz_offset):
+    jd = swe.julday(year, month, day, 0) - tz_offset/24.0
+    srise = swe.rise_trans(jd, swe.SUN, lon, lat, swe.CALC_RISE | swe.BIT_DISC_CENTER)[1][0]
+    return srise
+
+def get_sunset(year, month, day, lat, lon, tz_offset):
+    jd = swe.julday(year, month, day, 0) - tz_offset/24.0
+    sset = swe.rise_trans(jd, swe.SUN, lon, lat, swe.CALC_SET | swe.BIT_DISC_CENTER)[1][0]
+    return sset
+
+def get_varsha_lord(jd):
+    # 0 = Sunday, 1 = Monday, ..., 6 = Saturday (Maitreya order)
+    lords = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn']
+    weekday = int(jd + 2) % 7  # Maitreya/Indian convention: Sunday = 0
+    return lords[weekday]
+
+def get_masa_lord(month):
+    lords = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn']
+    # month: 1=Jan, ... 12=Dec (or lunar month number, as needed)
+    return lords[(month - 1) % 7]
+
+def get_dina_lord(jd):
+    lords = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn']
+    weekday = int(jd + 2) % 7
+    return lords[weekday]
+
+def get_hora_lord(jd, hour):
+    lords = ['Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars']
+    # Find weekday lord for the sunrise, which sets the starting hora
+    weekday_idx = int(jd + 2) % 7
+    # 'hora' counted from sunrise (hr 0), if you want the true local sunrise-hora sync, adjust hour accordingly
+    return lords[(weekday_idx + hour) % 7]

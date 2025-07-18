@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 class PanchangRequest(BaseModel):
     year: int
@@ -13,6 +13,9 @@ class PanchangRequest(BaseModel):
 
 class PanchangResponse(BaseModel):
     nakshatram: str
-    padam: int
+    padam: str
     rasi: str
-    vaaram: str
+    varam: str
+    tithi: str
+    yoga: str
+    karanam: str

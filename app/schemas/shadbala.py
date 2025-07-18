@@ -1,5 +1,25 @@
 from pydantic import BaseModel
-from typing import List
+from typing import Dict, List
+
+class BalaDetail(BaseModel):
+    value: float
+    detail: Dict[str, float]
+
+class PlanetShadBala(BaseModel):
+    planet: str
+    min_required: float
+    total: float
+    percent: float
+    rank: int
+    sthana: BalaDetail
+    dig: BalaDetail
+    kala: BalaDetail
+    cheshta: BalaDetail
+    naisargika: float
+    drik: BalaDetail
+    rupa: float
+    ishta_phala: float
+    kashta_phala: float
 
 class ShadBalaRequest(BaseModel):
     year: int
@@ -11,18 +31,6 @@ class ShadBalaRequest(BaseModel):
     lat: float
     lon: float
     tz_offset: float
-
-class PlanetShadBala(BaseModel):
-    planet: str
-    sthana: float
-    dig: float
-    kala: float
-    cheshta: float
-    naisargika: float
-    drik: float
-    total: float
-    percent: float
-    required: float
 
 class ShadBalaResponse(BaseModel):
     balas: List[PlanetShadBala]
