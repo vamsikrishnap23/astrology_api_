@@ -2,8 +2,7 @@ from fastapi import FastAPI
 from app.api.endpoints import router
 
 app = FastAPI(
-    title="Astrology API",
-    description="FastAPI backend for astrology calculations and chart/table generation",
+    title="Gayathri Vasthu Jyothishalayam API",
     version="1.0.0"
 )
 
