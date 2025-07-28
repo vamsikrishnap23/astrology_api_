@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class ProgressionChartRequest(BaseModel):
-    # Base (natal) details
+    # Natal details
     nat_year: int
     nat_month: int
     nat_day: int
@@ -11,8 +11,7 @@ class ProgressionChartRequest(BaseModel):
     nat_lat: float
     nat_lon: float
     nat_tz_offset: float
-
-    # Progression/target date (for progressed positions)
+    # Progression/target date
     prg_year: int
     prg_month: int
     prg_day: int
