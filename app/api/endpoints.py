@@ -189,7 +189,8 @@ def d60_chart_endpoint(payload: DivChartRequest):
 @router.post("/transit-chart", response_model=TransitChartSVGResponse)
 def transit_chart_endpoint(payload: TransitChartRequest):
     result = get_transit_chart_svg(payload)
-    return TransitChartSVGResponse(svg=result["svg"])
+    return TransitChartSVGResponse(**result)
+
 
 @router.post("/progression-chart", response_model=ProgressionChartSVGResponse)
 def progression_chart_endpoint(payload: ProgressionChartRequest):
